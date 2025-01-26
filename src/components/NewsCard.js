@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-export default function NewsCard({ article, variant, className }) {
+export default function NewsCard({ article, variant, className, onClick }) {
   const variants = {
     featured: "col-span-3 row-span-2 md:col-span-2 lg:col-span-3",
     tall: "col-span-1 row-span-1",
@@ -27,7 +27,7 @@ export default function NewsCard({ article, variant, className }) {
       flex flex-col
       noise
       ${className}
-    `}>
+    `} onClick={onClick}>
       <div className={`
         relative w-full
         ${variant === 'featured' ? 'h-[400px]' : 

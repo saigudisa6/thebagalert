@@ -65,6 +65,7 @@ export default function HomePage() {
         </div>
         <Topics topics={topics}/>
         <NewsGrid articles={articles} />
+        {/* <Charts/> */}
       </div>
     </main>
   );
