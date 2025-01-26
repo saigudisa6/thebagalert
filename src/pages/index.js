@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import NewsGrid from "@/components/NewsGrid";
 import Header from "@/components/Header";
+import Topics from "@/components/Topics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,11 +54,16 @@ export default function HomePage() {
     // Add more articles as needed
   ];
 
+  const topics = ["Topic", "Topic", "Topic", "Topic", "Topic"];
+
   return (
-    <main className="flex flex-col items-center min-h-screen bg-gray-100">
-      
-      <div class="max-w-6xl mx-auto bg-white">
+    <main className="flex flex-col items-center min-h-screen bg-white pt-8">
+      <div class="max-w-4xl mx-auto bg-slate-50">
         <Header/>
+        <div className="text-center font-['Times_New_Roman'] font-bold text-9xl text-black border-t-4 border-b-4 border-black py-4 pt-12 pb-12">
+          BAG ALERT
+        </div>
+        <Topics topics={topics}/>
         <NewsGrid articles={articles} />
       </div>
     </main>

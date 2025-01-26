@@ -4,7 +4,7 @@ export default function NewsCard({ article, variant, className }) {
   const variants = {
     featured: "col-span-3 row-span-2 md:col-span-2 lg:col-span-3",
     tall: "col-span-1 row-span-1",
-    wide: "col-span-3 row-span-1",
+    wide: "col-span-2 row-span-1",
     normal: "col-span-1 row-span-1",
     wideShort: "col-span-2 row-span-1 h-[200px]",
     squished: "col-span-1/2 row-span-1" // half width variant
