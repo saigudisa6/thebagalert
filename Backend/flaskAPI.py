@@ -54,6 +54,10 @@ def create_user_profile_with_topics(user_id, first_name, last_name, email, topic
 
     return user_profile
 
+@app.route("/")
+def home():
+    return "Hello, World!"
+
 @app.route('/user', methods=['POST'])
 def create_user():
     try:
