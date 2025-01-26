@@ -14,6 +14,11 @@
   }
 }
 
+.noise{
+  background: rgb(182, 34, 58);
+  background-image: url(../assets/noise.png);
+}
+
 body {
   color: var(--foreground);
   background: var(--background);

@@ -22,9 +22,10 @@ export default function NewsCard({ article, variant, className }) {
   return (
     <div className={`
       ${variants[variant]}
-      relative bg-white overflow-hidden
+      relative overflow-hidden
       transition-shadow duration-300
       flex flex-col
+      noise
       ${className}
     `}>
       <div className={`
@@ -43,7 +44,7 @@ export default function NewsCard({ article, variant, className }) {
           priority
         />
       </div>
-      <div className="p-4 flex-1 bg-white">
+      <div className="p-4 flex-1">
         <h2 className={`${headingSizes[variant]} font-serif font-bold text-gray-900 mb-2`}>
           {article.title}
         </h2>

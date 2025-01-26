@@ -58,7 +58,7 @@ export default function HomePage() {
 
   return (
     <main className="flex flex-col items-center min-h-screen bg-white pt-8">
-      <div class="max-w-4xl mx-auto bg-slate-50">
+      <div class="max-w-4xl mx-auto bg-slate-50 noise">
         <Header/>
         <div className="text-center font-['Times_New_Roman'] font-bold text-9xl text-black border-t-4 border-b-4 border-black py-4 pt-12 pb-12">
           BAG ALERT
