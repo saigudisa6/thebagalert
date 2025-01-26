@@ -17,49 +17,11 @@ const geistMono = Geist_Mono({
 });
 
 function HomePage() {
-  const articles = [
-    {
-      title: "Major Global Summit Reaches Historic Climate Agreement",
-      imageUrl: "/summit.jpg",
-      excerpt: "World leaders announce groundbreaking climate initiatives in unprecedented gathering..."
-    },
-    {
-      title: "Daily Game",
-      imageUrl: "/game.jpg",
-      excerpt: "Solve a scenario based on today's articles!",
-      problem: "Let's say, hypothetically, that there were a financial problem. What would you do?" // Game Problem
-    },
-    {
-      title: "Sports Championship Finals",
-      imageUrl: "/sports.jpg",
-      excerpt: "Dramatic finish in championship match..."
-    },
-    {
-      title: "Sports Championship Finals",
-      imageUrl: "/sports.jpg",
-      excerpt: "Dramatic finish in championship match..."
-    },
-    {
-      title: "Sports Championship Finals",
-      imageUrl: "/sports.jpg",
-      excerpt: "Dramatic finish in championship match..."
-    },
-    {
-      title: "Local Community Story",
-      imageUrl: "/local.jpg",
-      excerpt: "Neighborhood initiative brings positive change..."
-    },
-    {
-      title: "Breaking Entertainment News",
-      imageUrl: "/entertainment.jpg",
-      excerpt: "Latest updates from Hollywood..."
-    },
-    // Add more articles as needed
-  ];
 
-  const topics = ["Topic", "Topic", "Topic", "Topic", "Topic"];
+  const topics = ["Investing", "Insurance", "Credit", "Loans", "Taxes"];
+  const levels = [1,2,3,3,1]
 
-  const [title, setTitle] = useState(null);
+  const [title, setTitle] = useState('BAG ALERT');
 
 
   return (
@@ -70,7 +32,7 @@ function HomePage() {
           {title}
         </div>
         <Topics topics={topics}/>
-        <NewsGrid articles={articles} />
+        <NewsGrid topics={topics} levels={levels}/>
         {/* <Charts/> */}
       </div>
     </main>
