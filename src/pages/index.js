@@ -22,9 +22,10 @@ export default function HomePage() {
       excerpt: "World leaders announce groundbreaking climate initiatives in unprecedented gathering..."
     },
     {
-      title: "Tech Innovation Breakthrough",
-      imageUrl: "/tech.jpg",
-      excerpt: "Revolutionary new technology promises to transform industry..."
+      title: "Daily Game",
+      imageUrl: "/game.jpg",
+      excerpt: "Solve a scenario based on today's articles!",
+      problem: "Let's say, hypothetically, that there were a financial problem. What would you do?" // Game Problem
     },
     {
       title: "Sports Championship Finals",

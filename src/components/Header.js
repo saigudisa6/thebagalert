@@ -12,6 +12,14 @@ export default function Header() {
     { code: 'CN', name: '中文' }
   ];
 
+  const subscriptionOptions = [
+    "This thing",
+    "Yearly Subscription",
+    "Lifetime Access",
+    "Family Plan",
+  ];
+
+
   const toggleOverlay = () => {
     setIsOverlayOpen((prev) => !prev);
   };
