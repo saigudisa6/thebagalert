@@ -12,6 +12,7 @@ export default function Header() {
     { code: 'CN', name: '中文' }
   ];
 
+  // This needs to be the list of all articles that are not subscribed 
   const subscriptionOptions = [
     "This thing",
     "Yearly Subscription",
@@ -61,7 +62,7 @@ export default function Header() {
   };
   // Modify the return section:
   return (
-    <header className="max-w-6xl pt-4 pb-6">
+    <header className="max-w-6xl pt-4 pb-6 font-serif">
       <div className="max-w-6xl mx-auto flex justify-between items-center px-6 h-16">
         <div className="font-['Times_New_Roman'] text-4xl font-bold text-gray-800">
           {translations[selectedLanguage].bagAlert}
