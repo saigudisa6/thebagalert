@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import NewsGrid from "@/components/NewsGrid";
 import Header from "@/components/Header";
 import Topics from "@/components/Topics";
+import { useState } from "react";
+import { withAuthenticator } from "@aws-amplify/ui-react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,7 +16,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export default function HomePage() {
+function HomePage() {
   const articles = [
     {
       title: "Major Global Summit Reaches Historic Climate Agreement",
@@ -57,12 +59,15 @@ export default function HomePage() {
 
   const topics = ["Topic", "Topic", "Topic", "Topic", "Topic"];
 
+  const [title, setTitle] = useState(null);
+
+
   return (
     <main className="flex flex-col items-center min-h-screen bg-gray-300 pt-8">
       <div class="max-w-4xl mx-auto bg-slate-50 noise">
-        <Header/>
+        <Header setTitle={setTitle}/>
         <div className="text-center font-['Times_New_Roman'] font-bold text-9xl text-black border-t-4 border-b-4 border-black py-4 pt-12 pb-12">
-          BAG ALERT
+          {title}
         </div>
         <Topics topics={topics}/>
         <NewsGrid articles={articles} />
@@ -71,3 +76,5 @@ export default function HomePage() {
     </main>
   );
 }
+
+export default HomePage

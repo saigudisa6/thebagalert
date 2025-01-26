@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-export default function Header() {
+export default function Header({setTitle}) {
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState('English');
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
-
+    
   const languages = [
     { code: 'EN', name: 'English' },
     { code: 'ES', name: 'Español' },
@@ -39,33 +39,38 @@ export default function Header() {
       subscribe: 'SUBSCRIBE',
       help: 'HELP',
       account: 'ACCOUNT',
-      bagAlert: 'THE BAG ALERT'
+      theBagAlert: 'THE BAG ALERT',
+      bagAlert:'BAG ALERT'
     },
     'Español': {
       subscribe: 'SUSCRIBIR',
       help: 'AYUDA',
       account: 'CUENTA',
-      bagAlert: 'LA ALERTA DE BAG'
+      theBagAlert: 'LA ALERTA DE BAG',
+      bagAlert:'ALERTA DE BAG'
     },
     'Français': {
       subscribe: 'S\'ABONNER',
       help: 'AIDE',
       account: 'COMPTE',
-      bagAlert: 'L\'ALERTE BAG'
+      theBagAlert: 'L\'ALERTE BAG',
+      bagAlert: 'ALERTE BAG'
     },
     '中文': {
       subscribe: '订阅',
       help: '帮助',
       account: '账户',
-      bagAlert: '包包警报'
+      theBagAlert: 'BAG警报',
+      bagAlert: 'BAG警报'
     }
   };
+  setTitle(translations[selectedLanguage].bagAlert);
   // Modify the return section:
   return (
     <header className="max-w-6xl pt-4 pb-6 font-serif">
       <div className="max-w-6xl mx-auto flex justify-between items-center px-6 h-16">
         <div className="font-['Times_New_Roman'] text-4xl font-bold text-gray-800">
-          {translations[selectedLanguage].bagAlert}
+          {translations[selectedLanguage].theBagAlert}
         </div>
   
         <div className="relative">
