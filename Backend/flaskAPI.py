@@ -5,7 +5,7 @@ from boto3.dynamodb.conditions import Key
 # Initialize Flask app and DynamoDB
 app = Flask(__name__)
 DYNAMODB_TABLE = "UserProfile"
-dynamodb = boto3.resource("dynamodb")
+dynamodb = boto3.resource("dynamodb", region_name="us-east-2")
 table = dynamodb.Table(DYNAMODB_TABLE)
 topics_table = dynamodb.Table("Topics")
 
@@ -57,6 +57,7 @@ def create_user_profile_with_topics(user_id, first_name, last_name, email, topic
 @app.route('/user', methods=['POST'])
 def create_user():
     try:
+        #need to change this to take in parameters
         user_data = create_user_profile_with_topics("11111", "Ram", "G", "email@gmail.com", ["Investing", "Credit", "Taxes"])
         print(user_data)
         table.put_item(Item=user_data)
