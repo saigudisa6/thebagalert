@@ -57,13 +57,31 @@ def create_user_profile_with_topics(user_id, first_name, last_name, email, topic
 @app.route('/user', methods=['POST'])
 def create_user():
     try:
-        #need to change this to take in parameters
-        user_data = create_user_profile_with_topics("11111", "Ram", "G", "email@gmail.com", ["Investing", "Credit", "Taxes"])
-        print(user_data)
+        # Extract parameters from the request body
+        request_data = request.json
+        
+        # Validate required fields
+        required_fields = ["UserID", "FirstName", "LastName", "Email", "Topics"]
+        for field in required_fields:
+            if field not in request_data:
+                return jsonify({"message": f"Missing required field: {field}"}), 400
+
+        # Extract individual fields
+        user_id = request_data["UserID"]
+        first_name = request_data["FirstName"]
+        last_name = request_data["LastName"]
+        email = request_data["Email"]
+        topic_list = request_data["Topics"]  # Expected to be a list of topics
+
+        # Create the user profile
+        user_data = create_user_profile_with_topics(user_id, first_name, last_name, email, topic_list)
+
+        # Insert the user profile into DynamoDB
         table.put_item(Item=user_data)
         return jsonify({"message": "User created successfully."}), 201
     except Exception as e:
         return jsonify({"message": "Error creating user.", "error": str(e)}), 500
+
 
 @app.route('/user', methods=['GET'])
 def get_user():
