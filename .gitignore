@@ -13,6 +13,9 @@
 # testing
 /coverage
 
+# python
+/bot-venv/lib
+
 # next.js
 /.next/
 /out/
