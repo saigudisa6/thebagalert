@@ -48,7 +48,7 @@ export default function NewsGrid({ articles }) {
                 <NewsCard
                     article={articles[2]}
                     variant="squished"
-                    className="border-r-2 border-b-2 border-black"
+                    className="border-b-2 border-black"
                     onClick={() => handleCardClick(articles[2])}
                 />
                 <NewsCard

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 
@@ -11,13 +12,35 @@ function AuthForm() {
   const [isLogin, setIsLogin] = useState(true);
   const [verificationCode, setVerificationCode] = useState("");
   const [needsVerification, setNeedsVerification] = useState(false);
+  const [selectedRole, setSelectedRole] = useState("individual");
   const { toast } = useToast();
 
   const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
     confirmPassword: "",
+    companyName: "",
+    companySize: "",
   });
+
+  const tabs = [
+    { id: 'individual', label: 'Individual' },
+    { id: 'company', label: 'Company' },
+    {id: '3', label: '33'},
+    {id: '4', label: '44'},
+    {id: '5', label: '55'},
+    {id: '6', label: '66'},
+    {id: '7', label: '77'},
+    {id: '8', label: '88'},
+    {id: '9', label: '99'},
+    {id: '10', label: '1010'},
+  ];
+  
+  const [selectedTabs, setSelectedTabs] = useState(
+    Object.fromEntries(tabs.map(tab => [tab.id, false]))
+  );
 
   async function onSubmit(type) {
     setIsLoading(true);
@@ -175,45 +198,72 @@ function AuthForm() {
             </div>
           ) : (
             <div className="mt-6 space-y-4">
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="registerEmail">Email</Label>
-                <Input
-                  id="registerEmail"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                />
-              </div>
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="registerPassword">Password</Label>
-                <Input
-                  id="registerPassword"
-                  type="password"
-                  value={formData.password}
-                  onChange={(e) => setFormData({...formData, password: e.target.value})}
-                />
-              </div>
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="confirmPassword">Confirm Password</Label>
-                <Input
-                  id="confirmPassword"
-                  type="password"
-                  value={formData.confirmPassword}
-                  onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})}
-                />
-              </div>
-              <Button 
-                className="w-full mt-2" 
-                onClick={() => onSubmit("register")}
-                disabled={isLoading}
-              >
-                {isLoading ? "Creating account..." : "Create account"}
-              </Button>
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="firstName">First Name</Label>
+              <Input
+                id="firstName"
+                value={formData.firstName}
+                onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+              />
             </div>
-          )}
-        </CardContent>
-      </Card>
-    </div>
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="lastName">Last Name</Label>
+              <Input
+                id="lastName"
+                value={formData.lastName}
+                onChange={(e) => setFormData({...formData, lastName: e.target.value})}
+              />
+            </div>
+
+            <div className="w-full">
+                <div className="grid w-full grid-cols-2 gap-4">
+                    {tabs.map((tab) => (
+                    <Button
+                        key={tab.id}
+                        variant="outline"
+                        className={`w-full ${selectedTabs[tab.id] ? 'bg-primary text-primary-foreground' : ''}`}
+                        onClick={() => setSelectedTabs(prev => ({
+                        ...prev,
+                        [tab.id]: !prev[tab.id]
+                        }))}
+                    >
+                        {tab.label}
+                    </Button>
+                    ))}
+                </div>
+            </div>
+
+
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="registerPassword">Password</Label>
+              <Input
+                id="registerPassword"
+                type="password"
+                value={formData.password}
+                onChange={(e) => setFormData({...formData, password: e.target.value})}
+              />
+            </div>
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="confirmPassword">Confirm Password</Label>
+              <Input
+                id="confirmPassword"
+                type="password"
+                value={formData.confirmPassword}
+                onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})}
+              />
+            </div>
+            <Button 
+              className="w-full mt-2" 
+              onClick={() => onSubmit("register")}
+              disabled={isLoading}
+            >
+              {isLoading ? "Creating account..." : "Create account"}
+            </Button>
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  </div>
   );
 }
 
